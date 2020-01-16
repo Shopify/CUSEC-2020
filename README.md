@@ -10,6 +10,6 @@ applications.
 
 1. Introductions (5-10 minutes)
 1. Vulnerabilities (15-20 minutes each)
-  1. [Cross Site Scripting](walkthroughs/xss.md)
-  1. [SQL injection](walkthroughs/sqli.md)
+    1. [Cross Site Scripting](walkthroughs/xss.md)
+    1. [SQL injection](walkthroughs/sqli.md)
 1. Questions (5 min)
