@@ -68,7 +68,7 @@ vulnerability.
 </details>
 <details>
   <summary><b>Answer</b></summary>
-  The vulnerable page is the product creation page at https://hack.jackmc.xyz/products/new.
+  The vulnerable page is the product creation page at http://hack.jackmc.xyz/products/new.
 </details>
 
 
